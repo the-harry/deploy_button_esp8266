@@ -4,9 +4,10 @@
 
 #define BUTTON D0
 
-#define SSID "SSID"
+#define SSID "WIFI"
 #define PASSWORD "PASS"
 #define SERVER "http://192.168.0.17:6666/api/v1/deploy"
+#define API_KEY "{~c[3^n3u7R-j/By"
 
 void setup() {
   pinMode(BUTTON, INPUT);
@@ -31,6 +32,7 @@ void loop() {
       http.begin(SERVER);
 
       http.addHeader("Content-Type", "application/json");
+      http.addHeader("API_KEY", API_KEY);
       int response = http.POST("{\"environment\":\"staging\"}");
 
       if (response == 201) {
