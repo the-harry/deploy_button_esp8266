@@ -4,6 +4,10 @@
 
 #define BUTTON D0
 
+#define L_RED D1
+#define L_YELLOW D2
+#define L_GREEN D8
+
 #define SSID "WIFI"
 #define PASSWORD "PASS"
 #define SERVER "http://192.168.0.17:6666/api/v1/deploy"
@@ -11,18 +15,18 @@
 
 void setup() {
   pinMode(BUTTON, INPUT);
+  pinMode(L_RED, OUTPUT);
+  pinMode(L_YELLOW, OUTPUT);
+  pinMode(L_GREEN, OUTPUT);
 
-  Serial.begin(9600);
   WiFi.begin(SSID, PASSWORD);
 
-  Serial.println("Connecting");
   while (WiFi.status() != WL_CONNECTED) {
-    Serial.println("disconnected");
+    digitalWrite(L_YELLOW, HIGH);
     delay(500);
   }
 
-  Serial.print("ip: ");
-  Serial.println(WiFi.localIP());
+  digitalWrite(L_YELLOW, LOW);
 }
 
 void loop() {
@@ -36,15 +40,21 @@ void loop() {
       int response = http.POST("{\"environment\":\"staging\"}");
 
       if (response == 201) {
-        Serial.println("scheduled");
+        digitalWrite(L_GREEN, HIGH);
+        delay(5000);
+        digitalWrite(L_GREEN, LOW);
       } else {
-        Serial.println("error");
+        digitalWrite(L_RED, HIGH);
+        delay(5000);
+        digitalWrite(L_RED, LOW);
       }
 
       http.end();
     }
     else {
-      Serial.println("disconnected");
+      digitalWrite(L_YELLOW, HIGH);
+      delay(2000);
+      digitalWrite(L_YELLOW, LOW);
     }
   }
 
