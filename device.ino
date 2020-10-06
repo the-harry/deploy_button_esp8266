@@ -2,10 +2,15 @@
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
 
-#define BUTTON D0
-
 #define L_GREEN D7
 #define L_RED D8
+
+#define BUTTON D0
+
+#define SW_1 D1
+#define SW_2 D2
+#define SW_3 D5
+#define SW_4 D6
 
 #define SSID "A1"
 #define PASSWORD "SENAH"
@@ -32,22 +37,45 @@ void error_warning() {
   digitalWrite(L_RED, LOW);
 }
 
+String current_environment() {
+  String env = "";
+
+  env.concat(digitalRead(SW_1));
+  env.concat(digitalRead(SW_2));
+  env.concat(digitalRead(SW_3));
+  env.concat(digitalRead(SW_4));
+
+  return env;
+}
+
+String payload() {
+  String data = "{\"environment\":\"";
+  data.concat(current_environment());
+  data.concat("\"}");
+  
+  return data;
+}
+
 int deploy_request() {
   HTTPClient http;
   http.begin(SERVER);
 
   http.addHeader("Content-Type", "application/json");
   http.addHeader("API_KEY", API_KEY);
-  int res = http.POST("{\"environment\":\"0000\"}");
+  int res = http.POST(payload());
   http.end();
 
   return res;
 }
 
 void setup() {
-  pinMode(BUTTON, INPUT);
   pinMode(L_RED, OUTPUT);
   pinMode(L_GREEN, OUTPUT);
+  pinMode(BUTTON, INPUT);
+  pinMode(SW_1, INPUT_PULLUP);
+  pinMode(SW_2, INPUT_PULLUP);
+  pinMode(SW_3, INPUT_PULLUP);
+  pinMode(SW_4, INPUT_PULLUP);
 
   WiFi.begin(SSID, PASSWORD);
 
