@@ -13,7 +13,7 @@
 #define SW_4 D6
 
 #define SSID "A1"
-#define PASSWORD "SENAH"
+#define PASSWORD "PASS"
 #define SERVER "http://192.168.0.17:6666/api/v1/deploy"
 #define API_KEY "{~c[3^n3u7R-j/By"
 
@@ -52,7 +52,7 @@ String payload() {
   String data = "{\"environment\":\"";
   data.concat(current_environment());
   data.concat("\"}");
-  
+
   return data;
 }
 
@@ -85,7 +85,7 @@ void setup() {
 }
 
 void loop() {
-  if (digitalRead(BUTTON) == LOW) {
+  if (digitalRead(BUTTON) == HIGH) {
     if (WiFi.status() == WL_CONNECTED) {
       if (deploy_request() == 201) {
         success_warning();
