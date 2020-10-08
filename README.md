@@ -37,7 +37,7 @@ To build this project you will need the following itens, some of then are option
 
 * 1 Mechanical switch and keycap (I've used a cherry MX blue) - (Optional, you may use only the push button, though it wont be so coll)
 
-* 1 box (You can use any box that are able to fit all components, wood or plastic would be my choise, I've used an old ABS plastic box out of a power unit of an old printer, after some cuts and tweeks it should be good)
+* 1 box (You can use any box that are able to fit all components, wood or plastic would be my choise, I've used an old ABS plastic box out of a power unit of an old printer, after some cuts and tweeks it was good to go)
 
 * Hotglue and some thermo-retractile tubes is also good to have but may be replaced.
 
