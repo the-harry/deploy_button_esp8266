@@ -95,8 +95,46 @@ If you want to add a safety lock mechanism like I did you will need the followin
 
 * Ducktape or glue to hold the wood inside the box
 
+## PINOUT
+
+```
+LED_GREEN D7
+LED_RED D8
+
+BUTTON D0
+
+SWITCH_1 D1
+SWITCH_2 D2
+SWITCH_3 D5
+SWITCH_4 D6
+```
 
 ## ASSEMBLE
 
+![box](./img/box_1.jpeg)
 
-## PINOUT
+![box](./img/box_2.jpeg)
+
+![box](./img/box_3.jpeg)
+
+![box](./img/box_4.jpeg)
+
+![box](./img/box_5.jpeg)
+
+![box](./img/box_6.jpeg)
+
+![box](./img/box_7.jpeg)
+
+![box](./img/box_8.jpeg)
+
+![box](./img/box_9.jpeg)
+
+![box](./img/box_10.jpeg)
+
+![box](./img/box_11.jpeg)
+
+![box](./img/box_12.jpeg)
+
+![box](./img/box_13.jpeg)
+
+![box](./img/box_14.jpeg)
